@@ -2,7 +2,7 @@
   <div class="flex h-screen overflow-hidden">
     <div class="relative flex flex-col flex-1 overflow-hidden">
 
-      <header class="fixed w-full h-12 bg-white dark:bg-black z-30">
+      <header class="fixed w-full h-12 bg-white dark:bg-black">
         <div class="px-2 dark:bg-black">
           <div class="flex items-center justify-between h-12 lg:border-b border-gray-200 dark:border-gray-700/60">
             <div class="flex">
@@ -45,8 +45,8 @@
               </p>
             </div>
           </div>
+          <slot name="header"></slot>
         </div>
-        <slot name="header"></slot>
       </header>
 
       <!-- Main Content -->
@@ -55,13 +55,15 @@
 
         <!-- Footer -->
         <footer
-          class="fixed bottom-0 left-0 w-full h-16 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-700 z-30 disabled-section">
+          class="fixed bottom-0 w-full h-16 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-700 disabled-section">
           <div class="px-2 sm:px-2 lg:px-2 h-full flex items-center">
-            <input ref="footerInput" type="text" placeholder="Control ->"
-              class="w-96 h-10 px-2 border dark:bg-black dark:text-white border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-3 focus:ring-green-200"
-              @keydown="handleKeydown" />
+            <div class="flex">
+              <input ref="footerInput" type="text" placeholder="Control ->"
+                class="w-96 h-10 px-2 border dark:bg-black dark:text-white border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-3 focus:ring-green-200"
+                @keydown="handleKeydown" />
+            </div>
+            <slot name="footer"></slot>
           </div>
-          <slot name="footer"></slot>
         </footer>
       </main>
       <!-- <div v-if="showFullscreenPrompt" class="absolute inset-0 flex items-center justify-center bg-black/50 z-50">

@@ -1,7 +1,16 @@
 <template>
   <DashboardLayout>
+    <template #header>
+      <div class="flex">
+        <p>
+          <span class="text-base font-semibold">Clear All Items</span><span
+            class="text-xs mt-1 text-yellow-700 dark:text-yellow-300">
+            [Shift + C]</span>
+        </p>
+      </div>
+    </template>
     <template #main>
-      <div class="px-2 sm:px-4 lg:px-2 pb-4 w-full mx-none max-w-full">
+      <div class="px-2 sm:px-4 lg:px-2 pb-4 mt-6 w-full mx-none max-w-full">
         <div>
           <h1 class="text-xl font-semibold text-gray-800 dark:text-yellow-200 mb-4">Captured Values</h1>
           <ul class="list-disc pl-6">
@@ -12,7 +21,9 @@
         </div>
       </div>
     </template>
-    <template #footer></template>
+    <template #footer>
+      <div class="px-2 sm:px-2 lg:px-2 h-full flex items-center">Will list the item in the page</div>
+    </template>
   </DashboardLayout>
 </template>
 
@@ -36,6 +47,8 @@ export default {
           capturedValues.value.push(inputValue); // Add non-empty value to the list
           inputRef.value.value = ''; // Clear input
         }
+      } else if (event.shiftKey && (event.key === 'c' || event.key === 'C')) {
+        capturedValues.value = []
       }
     };
 
